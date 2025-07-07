@@ -129,8 +129,13 @@ for nivel in range(1,101):
                     incorrectas.append(op)
             eliminadas = random.sample(incorrectas,2)
             print("se eliminaron:", eliminadas[0], "y",eliminadas[1])
-            opciones = [op for op in opciones if op not in eliminadas]
-            comodines["eliminar"] = True 
+            nuevas_opciones = []
+            for op in opciones:
+                if op not in eliminadas:
+                    nuevas_opciones.append(op) 
+            opciones = nuevas_opciones
+            comodines["eliminar"] = True
+             
 
         elif respuesta == "2" and comodines ["llamar"] == False:
             ayuda = random.choice(opciones)
